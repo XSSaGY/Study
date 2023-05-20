@@ -12,7 +12,7 @@ public:
     {}
     //Linknode(int length, const T& value);                      //构造长度为length,值为value的容器
     Linknode<T>* getNext() { return next; }                      //返回next值
-    T getData() { return data; }                                 //返回data值
+    T& getData() { return data; }                                 //返回data值
     void setNext(Linknode<T>* next);                             //修改next的值
     void setData(T data);                                        //修改data值
     Linknode<T> operator =(const Linknode<T> a) const;           //重载=
