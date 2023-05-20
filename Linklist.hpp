@@ -1,8 +1,8 @@
-#include "Linknode.hpp"
+ï»¿#include "Linknode.hpp"
 
 template <typename T> class Linklist;
 /// <summary>
-/// µü´úÆ÷
+/// è¿­ä»£å™¨
 /// </summary>
 /// <typeparam name="T"></typeparam>
 template <typename T>
@@ -14,14 +14,14 @@ public:
     {}
     ~Linklist_iterator()
     {}
-    //ÖØÔØÔËËã·û
+    //é‡è½½è¿ç®—ç¬¦
     bool operator==(Linklist_iterator other);
     bool operator!=(Linklist_iterator other);
-    Linklist_iterator& operator=(const Linklist_iterator& it);                //¸³ÖµÔËËã·ûÖØÔØ
-    T& operator*();                                                           //½âÒıÓÃÖØÔØ
+    Linklist_iterator& operator=(const Linklist_iterator& it);                //èµ‹å€¼è¿ç®—ç¬¦é‡è½½
+    T& operator*();                                                           //è§£å¼•ç”¨é‡è½½
     T& operator->();
-    Linklist_iterator& operator++();                                         //ÁîiteratorÖ¸ÏòÈİÆ÷ÏÂÒ»¸öÎ»ÖÃ
-    Linklist_iterator operator++(int);                                       //ÁîiteratorÖ¸ÏòÈİÆ÷ÉÏÒ»¸öÎ»ÖÃ
+    Linklist_iterator& operator++();                                         //ä»¤iteratoræŒ‡å‘å®¹å™¨ä¸‹ä¸€ä¸ªä½ç½®
+    Linklist_iterator operator++(int);                                       //ä»¤iteratoræŒ‡å‘å®¹å™¨ä¸Šä¸€ä¸ªä½ç½®
 protected:
     Linknode<T>* node;
 };
@@ -30,7 +30,7 @@ protected:
 /// <summary>
 /// 
 /// </summary>
-template <typename T>                                           //Ê¹ÓÃÄ£°å
+template <typename T>                                           //ä½¿ç”¨æ¨¡æ¿
 class Linklist
 {
 public:
@@ -41,22 +41,22 @@ public:
     ~Linklist()
     {}
 
-	size_t Length();                                                        //Çó±í³¤
-    bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //²åÈëÔªËØ
-	bool Delete(Linknode<T> elem);                                          //É¾³ıÔªËØ
-	bool Modity(Linknode<T>* location, Linknode<T> elem);                   //ĞŞ¸ÄÔªËØ
-    Linknode<T>* LocateElem(T elem);                                        //·µ»ØÔªËØµØÖ·
-    Linknode<T>* getEnd();                                                  //·µ»ØÁ´±í×îºóÒ»¸ö½ÚµãµØÖ·
-    Linknode<T>* getBegin() { return head.getNext(); }                      //·µ»ØÁ´±íµÚÒ»¸ö½ÚµãµØÖ·
-    iterator begin();                                                       //Í·µü´úÆ÷
-    iterator end() { return {}; }                                           //Î²µü´úÆ÷
+	size_t Length();                                                        //æ±‚è¡¨é•¿
+    bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //æ’å…¥å…ƒç´ 
+	bool Delete(Linknode<T> elem);                                          //åˆ é™¤å…ƒç´ 
+	bool Modity(Linknode<T>* location, Linknode<T> elem);                   //ä¿®æ”¹å…ƒç´ 
+    Linknode<T>* LocateElem(T elem);                                        //è¿”å›å…ƒç´ åœ°å€
+    Linknode<T>* getEnd();                                                  //è¿”å›é“¾è¡¨æœ€åä¸€ä¸ªèŠ‚ç‚¹åœ°å€
+    Linknode<T>* getBegin() { return head.getNext(); }                      //è¿”å›é“¾è¡¨ç¬¬ä¸€ä¸ªèŠ‚ç‚¹åœ°å€
+    iterator begin();                                                       //å¤´è¿­ä»£å™¨
+    iterator end() { return {}; }                                           //å°¾è¿­ä»£å™¨
 private:
-	int size;													            //³¤¶È
-    Linknode<T> head;											            //Í·½Úµã
+	int size;													            //é•¿åº¦
+    Linknode<T> head;											            //å¤´èŠ‚ç‚¹
 };
 
 /// <summary>
-/// ·µ»Ø³¤¶È
+/// è¿”å›é•¿åº¦
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <returns></returns>
@@ -67,11 +67,11 @@ size_t Linklist<T>::Length()
 }
 
 /// <summary>
-/// ºó²å·¨
+/// åæ’æ³•
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <param name="elem">ÔªËØ</param>
-/// <param name="location">ÏÂ±ê</param>
+/// <param name="elem">å…ƒç´ </param>
+/// <param name="location">ä¸‹æ ‡</param>
 /// <returns></returns>
 template <typename T>
 bool Linklist<T>::Linklist::Insert(Linknode<T>* elem, Linknode<T>* location)

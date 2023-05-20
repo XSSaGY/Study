@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 
-template <typename T>                                           //Ê¹ÓÃÄ£°å
+template <typename T>                                           //ä½¿ç”¨æ¨¡æ¿
 class Linknode
 {
 public:
-    Linknode()                                                  //Î¯ÍĞ¹¹Ôì
+    Linknode()                                                  //å§”æ‰˜æ„é€ 
         : Linknode({})
     {}
-    Linknode(T value)                                           //ÖµÔÚ·½À¨ºÅÖĞ
+    Linknode(T value)                                           //å€¼åœ¨æ–¹æ‹¬å·ä¸­
         : data{ value }, next{ nullptr }
     {}
-    //Linknode(int length, const T& value);                      //¹¹Ôì³¤¶ÈÎªlength,ÖµÎªvalueµÄÈİÆ÷
-    Linknode<T>* getNext() { return next; }                      //·µ»ØnextÖµ
-    T& getData() { return data; }                                 //·µ»ØdataÖµ
-    void setNext(Linknode<T>* next);                             //ĞŞ¸ÄnextµÄÖµ
-    void setData(T data);                                        //ĞŞ¸ÄdataÖµ
-    Linknode<T> operator =(const Linknode<T> a) const;           //ÖØÔØ=
+    //Linknode(int length, const T& value);                      //æ„é€ é•¿åº¦ä¸ºlength,å€¼ä¸ºvalueçš„å®¹å™¨
+    Linknode<T>* getNext() { return next; }                      //è¿”å›nextå€¼
+    T& getData() { return data; }                                 //è¿”å›dataå€¼
+    void setNext(Linknode<T>* next);                             //ä¿®æ”¹nextçš„å€¼
+    void setData(T data);                                        //ä¿®æ”¹dataå€¼
+    Linknode<T> operator =(const Linknode<T> a) const;           //é‡è½½=
     Linknode<T> operator =(Linknode<T> a);
-    ~Linknode() = default;                                       //Îö¹¹
+    ~Linknode() = default;                                       //ææ„
 protected:
 
 private:
