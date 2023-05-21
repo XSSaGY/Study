@@ -43,13 +43,19 @@ public:
 
 	size_t Length();                                                        //求表长
     bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //插入元素
+    bool it_Insert(iterator it, Linknode<T>* elem);                         //使用迭代器插入元素
 	bool Delete(Linknode<T> elem);                                          //删除元素
 	bool Modity(Linknode<T>* location, Linknode<T> elem);                   //修改元素
     Linknode<T>* LocateElem(T elem);                                        //返回元素地址
     Linknode<T>* getEnd();                                                  //返回链表最后一个节点地址
     Linknode<T>* getBegin() { return head.getNext(); }                      //返回链表第一个节点地址
-    iterator begin();                                                       //头迭代器
     iterator end() { return {}; }                                           //尾迭代器
+    iterator begin()                                                        //头迭代器
+    {
+        iterator it;
+        it.node = head.getNext();
+        return it;
+    }                                                      
 private:
 	int size;													            //长度
     Linknode<T> head;											            //头节点
@@ -82,16 +88,20 @@ bool Linklist<T>::Linklist::Insert(Linknode<T>* elem, Linknode<T>* location)
     }
     else
     {
-        Linknode<T> temp;
-        //temp.setData(location->getData());
-        temp.setNext(location->getNext());
-        //location->setData(elem.getData());
+        elem->setNext(location->getNext());
         location->setNext(elem);
-        //elem.setData(temp.getData());
-        elem->setNext(temp.getNext());
         size++;
         return true;
     }
+}
+
+template<typename T>
+bool Linklist<T>::it_Insert(iterator it, Linknode<T>* elem)
+{
+    elem->setNext(it.node->getNext());
+    it.node->setNext(elem);
+    size++;
+    return true;
 }
 
 template<typename T>
@@ -147,15 +157,6 @@ inline Linknode<T>* Linklist<T>::getEnd()
     }
     return p;
 }
-
-template<typename T>
-Linklist<T>::iterator Linklist<T>::begin()
-{
-    iterator it;
-    it.node = head.getNext();
-    return it;
-}
-
 
 template<typename T>
 bool Linklist_iterator<T>::operator==(Linklist_iterator<T> other)
