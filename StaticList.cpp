@@ -1,27 +1,27 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
-constexpr int MAXLENGTH{ 10 };                                                               //×î´ó±í³¤
+constexpr int MAXLENGTH{ 10 };                                                               //æœ€å¤§è¡¨é•¿
 /// <summary>
-/// ¾²Ì¬Ë³Ğò±í
+/// é™æ€é¡ºåºè¡¨
 /// </summary>
 class Static_list
 {
 public:
-    bool InitList(Static_list &L);                                                           //³õÊ¼»¯±í
-    int Length(Static_list L);                                                               //Çó±í³¤
-    bool ListInsert(Static_list & L, int location, int elem);                                //Ïò±íÖĞ²åÈëÔªËØ
-    bool ListDelete(Static_list& L, int location, int& e);                                   //ÔÚ±íÖĞÉ¾³ıÔªËØ
-    int LocateElem(Static_list L, int elem);                                                 //°´Öµ²éÕÒ±íÖĞÔªËØ
+    bool InitList(Static_list &L);                                                           //åˆå§‹åŒ–è¡¨
+    int Length(Static_list L);                                                               //æ±‚è¡¨é•¿
+    bool ListInsert(Static_list & L, int location, int elem);                                //å‘è¡¨ä¸­æ’å…¥å…ƒç´ 
+    bool ListDelete(Static_list& L, int location, int& e);                                   //åœ¨è¡¨ä¸­åˆ é™¤å…ƒç´ 
+    int LocateElem(Static_list L, int elem);                                                 //æŒ‰å€¼æŸ¥æ‰¾è¡¨ä¸­å…ƒç´ 
 private:
     int data[MAXLENGTH];
-    int length;                                                                              //±íµÄ³¤¶È
+    int length;                                                                              //è¡¨çš„é•¿åº¦
 };
 /// <summary>
-/// ³õÊ¼»¯±í
+/// åˆå§‹åŒ–è¡¨
 /// </summary>
-/// <param name="L">´´½¨µÄStatic_listÀàĞÍµÄ±í</param>
+/// <param name="L">åˆ›å»ºçš„Static_listç±»å‹çš„è¡¨</param>
 /// <returns>true</returns>
 bool Static_list::InitList(Static_list &L) {
     L.length = 0;
@@ -32,7 +32,7 @@ bool Static_list::InitList(Static_list &L) {
     return true;
 }
 /// <summary>
-/// ·µ»Ø±í³¤¶È
+/// è¿”å›è¡¨é•¿åº¦
 /// </summary>
 /// <param name="L"></param>
 /// <returns></returns>
@@ -41,12 +41,12 @@ int Static_list::Length(Static_list L)
     return L.length;
 }
 /// <summary>
-/// Ïò±íÖĞ²åÈëÔªËØ
+/// å‘è¡¨ä¸­æ’å…¥å…ƒç´ 
 /// </summary>
-/// <param name="L">Ë³Ğò±í</param>
-/// <param name="location">Òª²åÈëµÄÎ»ÖÃ</param>
-/// <param name="elem">Òª²åÈëµÄÔªËØ</param>
-/// <returns>³É¹¦·µ»ØtrueÊ§°Ü·µ»Øfalse</returns>
+/// <param name="L">é¡ºåºè¡¨</param>
+/// <param name="location">è¦æ’å…¥çš„ä½ç½®</param>
+/// <param name="elem">è¦æ’å…¥çš„å…ƒç´ </param>
+/// <returns>æˆåŠŸè¿”å›trueå¤±è´¥è¿”å›false</returns>
 bool Static_list::ListInsert(Static_list& L, int location, int elem)
 {
     if (location > MAXLENGTH && location > L.length)
@@ -61,12 +61,12 @@ bool Static_list::ListInsert(Static_list& L, int location, int elem)
     return true;
 }
 /// <summary>
-/// É¾³ı±íÖĞÔªËØ
+/// åˆ é™¤è¡¨ä¸­å…ƒç´ 
 /// </summary>
-/// <param name="L">±í</param>
-/// <param name="location">É¾³ıÔªËØµÄÎ»ÖÃ</param>
-/// <param name="e">É¾³ıÔªËØµÄÖµ</param>
-/// <returns>³É¹¦trueÊ§°Üfalse</returns>
+/// <param name="L">è¡¨</param>
+/// <param name="location">åˆ é™¤å…ƒç´ çš„ä½ç½®</param>
+/// <param name="e">åˆ é™¤å…ƒç´ çš„å€¼</param>
+/// <returns>æˆåŠŸtrueå¤±è´¥false</returns>
 bool Static_list::ListDelete(Static_list& L, int location, int& e)
 {
     if (location >= L.length)
@@ -81,11 +81,11 @@ bool Static_list::ListDelete(Static_list& L, int location, int& e)
     return true;
 }
 /// <summary>
-/// °´Öµ²éÕÒ
+/// æŒ‰å€¼æŸ¥æ‰¾
 /// </summary>
-/// <param name="L">±í</param>
-/// <param name="elem">²éÕÒµÄÔªËØ</param>
-/// <returns>ÏÂ±ê</returns>
+/// <param name="L">è¡¨</param>
+/// <param name="elem">æŸ¥æ‰¾çš„å…ƒç´ </param>
+/// <returns>ä¸‹æ ‡</returns>
 int Static_list::LocateElem(Static_list L, int elem)
 {
     for (int i = 0; i < L.length; i++)

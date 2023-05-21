@@ -1,8 +1,8 @@
-#include "Linknode.hpp"
+ï»¿#include "Linknode.hpp"
 
 template <typename T> class Linklist;
 /// <summary>
-/// µü´úÆ÷
+/// è¿­ä»£å™¨
 /// </summary>
 /// <typeparam name="T"></typeparam>
 template <typename T>
@@ -14,14 +14,14 @@ public:
     {}
     ~Linklist_iterator()
     {}
-    //ÖØÔØÔËËã·û
+    //é‡è½½è¿ç®—ç¬¦
     bool operator==(Linklist_iterator other);
     bool operator!=(Linklist_iterator other);
-    Linklist_iterator& operator=(const Linklist_iterator& it);                //¸³ÖµÔËËã·ûÖØÔØ
-    T& operator*();                                                           //½âÒıÓÃÖØÔØ
+    Linklist_iterator& operator=(const Linklist_iterator& it);                //èµ‹å€¼è¿ç®—ç¬¦é‡è½½
+    T& operator*();                                                           //è§£å¼•ç”¨é‡è½½
     T& operator->();
-    Linklist_iterator& operator++();                                         //ÁîiteratorÖ¸ÏòÈİÆ÷ÏÂÒ»¸öÎ»ÖÃ
-    Linklist_iterator operator++(int);                                       //ÁîiteratorÖ¸ÏòÈİÆ÷ÉÏÒ»¸öÎ»ÖÃ
+    Linklist_iterator& operator++();                                         //ä»¤iteratoræŒ‡å‘å®¹å™¨ä¸‹ä¸€ä¸ªä½ç½®
+    Linklist_iterator operator++(int);                                       //ä»¤iteratoræŒ‡å‘å®¹å™¨ä¸Šä¸€ä¸ªä½ç½®
 protected:
     Linknode<T>* node;
 };
@@ -30,7 +30,7 @@ protected:
 /// <summary>
 /// 
 /// </summary>
-template <typename T>                                           //Ê¹ÓÃÄ£°å
+template <typename T>                                           //ä½¿ç”¨æ¨¡æ¿
 class Linklist
 {
 public:
@@ -41,28 +41,28 @@ public:
     ~Linklist()
     {}
 
-	size_t Length();                                                        //Çó±í³¤
-    bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //²åÈëÔªËØ
-    bool it_Insert(iterator it, Linknode<T>* elem);                         //Ê¹ÓÃµü´úÆ÷²åÈëÔªËØ
-	bool Delete(Linknode<T> elem);                                          //É¾³ıÔªËØ
-	bool Modity(Linknode<T>* location, Linknode<T> elem);                   //ĞŞ¸ÄÔªËØ
-    Linknode<T>* LocateElem(T elem);                                        //·µ»ØÔªËØµØÖ·
-    Linknode<T>* getEnd();                                                  //·µ»ØÁ´±í×îºóÒ»¸ö½ÚµãµØÖ·
-    Linknode<T>* getBegin() { return head.getNext(); }                      //·µ»ØÁ´±íµÚÒ»¸ö½ÚµãµØÖ·
-    iterator end() { return {}; }                                           //Î²µü´úÆ÷
-    iterator begin()                                                        //Í·µü´úÆ÷
+	size_t Length();                                                        //ï¿½ï¿½ï¿½ï¿½ï¿½
+    bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+    bool it_Insert(iterator it, Linknode<T>* elem);                         //Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+	bool Delete(Linknode<T> elem);                                          //É¾ï¿½ï¿½Ôªï¿½ï¿½
+	bool Modity(Linknode<T>* location, Linknode<T> elem);                   //ï¿½Ş¸ï¿½Ôªï¿½ï¿½
+    Linknode<T>* LocateElem(T elem);                                        //ï¿½ï¿½ï¿½ï¿½Ôªï¿½Øµï¿½Ö·
+    Linknode<T>* getEnd();                                                  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½Ö·
+    Linknode<T>* getBegin() { return head.getNext(); }                      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½Ö·
+    iterator end() { return {}; }                                           //Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    iterator begin()                                                        //Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         iterator it;
         it.node = head.getNext();
         return it;
     }                                                      
 private:
-	int size;													            //³¤¶È
-    Linknode<T> head;											            //Í·½Úµã
+	int size;													            //é•¿åº¦
+    Linknode<T> head;											            //å¤´èŠ‚ç‚¹
 };
 
 /// <summary>
-/// ·µ»Ø³¤¶È
+/// è¿”å›é•¿åº¦
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <returns></returns>
@@ -73,11 +73,11 @@ size_t Linklist<T>::Length()
 }
 
 /// <summary>
-/// ºó²å·¨
+/// åæ’æ³•
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <param name="elem">ÔªËØ</param>
-/// <param name="location">ÏÂ±ê</param>
+/// <param name="elem">å…ƒç´ </param>
+/// <param name="location">ä¸‹æ ‡</param>
 /// <returns></returns>
 template <typename T>
 bool Linklist<T>::Linklist::Insert(Linknode<T>* elem, Linknode<T>* location)

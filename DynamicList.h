@@ -1,21 +1,21 @@
-#pragma once
+ï»¿#pragma once
 
 /// <summary>
-/// ¶¯Ì¬Ë³Ğò±í
+/// åŠ¨æ€é¡ºåºè¡¨
 /// </summary>
 class Dynamic_list
 {
 public:
-    int Length();                                                            //Çó±í³¤
-    void Insert(int location, int elem);                                     //Ïò±íÖĞ²åÈëÔªËØ
-    bool Delete(int location);                                               //ÔÚ±íÖĞÉ¾³ıÔªËØ
-    int LocateElem(int elem);                                                //°´Öµ²éÕÒ±íÖĞÔªËØ
+    int Length();                                                            //æ±‚è¡¨é•¿
+    void Insert(int location, int elem);                                     //å‘è¡¨ä¸­æ’å…¥å…ƒç´ 
+    bool Delete(int location);                                               //åœ¨è¡¨ä¸­åˆ é™¤å…ƒç´ 
+    int LocateElem(int elem);                                                //æŒ‰å€¼æŸ¥æ‰¾è¡¨ä¸­å…ƒç´ 
     int& operator [](int index);
     const int& operator [](int index) const;
 protected:
     /**
-     * @brief ¼ì²é³ß´ç²¢°´ĞèÀ©³ä
-     * @param sz ĞèÒª¼ì²éµÄĞÂ³ß´ç
+     * @brief æ£€æŸ¥å°ºå¯¸å¹¶æŒ‰éœ€æ‰©å……
+     * @param sz éœ€è¦æ£€æŸ¥çš„æ–°å°ºå¯¸
     */
     inline void check_resize(int sz);
 

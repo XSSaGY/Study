@@ -1,11 +1,11 @@
-#include "DynamicList.h"
+ï»¿#include "DynamicList.h"
 #include <iostream>
 
 /// <summary>
-/// Ïò±íÖĞ²åÈëÔªËØ
+/// å‘è¡¨ä¸­æ’å…¥å…ƒç´ 
 /// </summary>
-/// <param name="len">Òª²åÈëµÄ³¤¶È</param>
-/// <returns>³É¹¦true Ê§°Üfalse</returns>
+/// <param name="len">è¦æ’å…¥çš„é•¿åº¦</param>
+/// <returns>æˆåŠŸtrue å¤±è´¥false</returns>
 //bool Dynamic_list::Increase(int len)
 //{
 //    int* p = data;
@@ -19,10 +19,10 @@
 
 inline void Dynamic_list::check_resize(int sz)
 {
-    // m_cap µ±Ç°ÈİÁ¿
-    // m_size µ±Ç°³ß´ç
-    // m_data Êı¾İÆğÊ¼µØÖ·
-    // m_mt Ğ´ÈëËø
+    // m_cap å½“å‰å®¹é‡
+    // m_size å½“å‰å°ºå¯¸
+    // m_data æ•°æ®èµ·å§‹åœ°å€
+    // m_mt å†™å…¥é”
     if (sz <= m_cap)
         return;
 
@@ -54,7 +54,7 @@ const int& Dynamic_list::operator[](int index) const
 }
 
 /// <summary>
-/// ·µ»Ø±í³¤¶È
+/// è¿”å›è¡¨é•¿åº¦
 /// </summary>
 /// <param name="L"></param>
 /// <returns></returns>
@@ -63,12 +63,12 @@ int Dynamic_list::Length()
     return m_len;
 }
 /// <summary>
-/// Ïò±íÖĞ²åÈëÔªËØ
+/// å‘è¡¨ä¸­æ’å…¥å…ƒç´ 
 /// </summary>
-/// <param name="L">Ë³Ğò±í</param>
-/// <param name="location">Òª²åÈëµÄÎ»ÖÃ</param>
-/// <param name="elem">Òª²åÈëµÄÔªËØ</param>
-/// <returns>³É¹¦·µ»ØtrueÊ§°Ü·µ»Øfalse</returns>
+/// <param name="L">é¡ºåºè¡¨</param>
+/// <param name="location">è¦æ’å…¥çš„ä½ç½®</param>
+/// <param name="elem">è¦æ’å…¥çš„å…ƒç´ </param>
+/// <returns>æˆåŠŸè¿”å›trueå¤±è´¥è¿”å›false</returns>
 void Dynamic_list::Insert(int location, int elem)
 {
     check_resize(m_len + 1);
@@ -78,12 +78,12 @@ void Dynamic_list::Insert(int location, int elem)
     m_data[location] = elem;
 }
 /// <summary>
-/// É¾³ı±íÖĞÔªËØ
+/// åˆ é™¤è¡¨ä¸­å…ƒç´ 
 /// </summary>
-/// <param name="L">±í</param>
-/// <param name="location">É¾³ıÔªËØµÄÎ»ÖÃ</param>
-/// <param name="e">É¾³ıÔªËØµÄÖµ</param>
-/// <returns>³É¹¦trueÊ§°Üfalse</returns>
+/// <param name="L">è¡¨</param>
+/// <param name="location">åˆ é™¤å…ƒç´ çš„ä½ç½®</param>
+/// <param name="e">åˆ é™¤å…ƒç´ çš„å€¼</param>
+/// <returns>æˆåŠŸtrueå¤±è´¥false</returns>
 bool Dynamic_list::Delete(int location)
 {
     if (location >= m_len)
@@ -94,11 +94,11 @@ bool Dynamic_list::Delete(int location)
     return true;
 }
 /// <summary>
-/// °´Öµ²éÕÒ
+/// æŒ‰å€¼æŸ¥æ‰¾
 /// </summary>
-/// <param name="L">±í</param>
-/// <param name="elem">²éÕÒµÄÔªËØ</param>
-/// <returns>ÏÂ±ê</returns>
+/// <param name="L">è¡¨</param>
+/// <param name="elem">æŸ¥æ‰¾çš„å…ƒç´ </param>
+/// <returns>ä¸‹æ ‡</returns>
 int Dynamic_list::LocateElem(int elem)
 {
     for (int i = 0; i < m_len; i++)
