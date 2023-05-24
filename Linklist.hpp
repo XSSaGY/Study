@@ -1,4 +1,5 @@
 ﻿#include "Linknode.hpp"
+#include <iostream>
 
 template <typename T> class Linklist;
 /// <summary>
@@ -21,7 +22,7 @@ public:
     T& operator*();                                                           //解引用重载
     T& operator->();
     Linklist_iterator& operator++();                                         //令iterator指向容器下一个位置
-    Linklist_iterator operator++(int);                                       //令iterator指向容器上一个位置
+    Linklist_iterator operator++(int);                                       //令iterator指向容器下一个位置
 protected:
     Linknode<T>* node;
 };
@@ -41,21 +42,39 @@ public:
     ~Linklist()
     {}
 
-	size_t Length();                                                        //�����
-    bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //����Ԫ��
-    bool it_Insert(iterator it, Linknode<T>* elem);                         //ʹ�õ���������Ԫ��
-	bool Delete(Linknode<T> elem);                                          //ɾ��Ԫ��
-	bool Modity(Linknode<T>* location, Linknode<T> elem);                   //�޸�Ԫ��
-    Linknode<T>* LocateElem(T elem);                                        //����Ԫ�ص�ַ
-    Linknode<T>* getEnd();                                                  //�����������һ���ڵ��ַ
-    Linknode<T>* getBegin() { return head.getNext(); }                      //����������һ���ڵ��ַ
-    iterator end() { return {}; }                                           //β������
-    iterator begin()                                                        //ͷ������
+	size_t Length();                                                        //求表长
+    bool Insert(Linknode<T>* elem, Linknode<T>* location);                  //插入元素
+	bool Delete(Linknode<T> elem);                                          //删除元素
+	bool Modity(T orginal, T val);                                          //修改元素
+    Linknode<T>* LocateElem(T elem);                                        //返回元素地址
+    Linknode<T>* getEnd();                                                  //返回链表最后一个节点地址
+    Linknode<T>* getBegin() { return head.getNext(); }                      //返回链表第一个节点地址
+
+
+    bool it_Insert(iterator it, T elem);                                    //使用迭代器插入元素
+    bool it_Delete(T elem);                                                 //use iterator to delete
+    //iterator it_LocateElem(T elem)                                          //使用迭代器返回元素地址
+    //{
+    //    iterator it = begin();
+    //    for (int i = 0; i < Length(); i++)
+    //    {
+    //        if (it.node->getData() == elem)
+    //        {
+    //            return it;
+    //            break;
+    //        }
+    //        ++it;
+    //    }
+    //}
+    iterator end() { return {}; }                                           //尾迭代器
+    iterator begin()                                                        //头迭代器
     {
         iterator it;
         it.node = head.getNext();
         return it;
-    }                                                      
+    }                                            
+protected:
+    bool insertBack(iterator it, Linknode<T>* elem);                        //后插操作
 private:
 	int size;													            //长度
     Linknode<T> head;											            //头节点
@@ -96,11 +115,10 @@ bool Linklist<T>::Linklist::Insert(Linknode<T>* elem, Linknode<T>* location)
 }
 
 template<typename T>
-bool Linklist<T>::it_Insert(iterator it, Linknode<T>* elem)
+bool Linklist<T>::it_Insert(iterator it, T elem)
 {
-    elem->setNext(it.node->getNext());
-    it.node->setNext(elem);
-    size++;
+    Linknode<T> elem_node(elem);
+    insertBack(it, &elem_node);
     return true;
 }
 
@@ -124,9 +142,25 @@ inline bool Linklist<T>::Delete(Linknode<T> elem)
 }
 
 template<typename T>
-inline bool Linklist<T>::Modity(Linknode<T>* location, Linknode<T> elem)
+inline bool Linklist<T>::it_Delete(T elem)
 {
-    location->setData(elem.getData());
+    iterator it = it_LocateElem(elem);
+    if (it.node->getNext() == nullptr)
+    {
+        delete it.node; 
+        return true;
+    }
+    it.node->setData(it.node->getNext()->getData());
+    it.node->setNext(it.node->getNext()->getNext());
+    delete it.node->getNext();
+    return true;
+}
+
+template<typename T>
+inline bool Linklist<T>::Modity(T origal, T val)
+{
+    Linknode<T>* location = LocateElem(origal);
+    location->setData(val);
     return true;
 }
 
@@ -156,6 +190,23 @@ inline Linknode<T>* Linklist<T>::getEnd()
         p = p->getNext();
     }
     return p;
+}
+
+template<typename T>
+inline bool Linklist<T>::insertBack(iterator it, Linknode<T>* elem)
+{
+    if (it == this->end())
+    {
+        this->getEnd()->setNext(elem);
+        size++;
+    }
+    else
+    {
+        elem->setNext(it.node->getNext());
+        it.node->setNext(elem);
+        size++;
+    }
+    return true;
 }
 
 template<typename T>

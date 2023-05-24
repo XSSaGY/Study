@@ -1,39 +1,10 @@
 #include "Linklist.hpp"
 #include "Linknode.hpp"
-#include <vector>
 #include <iostream>
 
 
 int main()
 {
-
-    //struct iterator {
-    //     using value_type = T;
-    //     
-    //     iterator() = default;
-    //     ~iterator() = default;
-    //     iterator & iterator(const iterator&) = default;
-    //     iterator & iterator(iterator&&) = default;
-    //     iterator & operator=(const iterator&) = default;
-    //     
-    //         iterator & operator++()
-    //          {
-    //         if (m_node != nullptr)
-    //              m_node = m_node->getNext();
-    //         return *this;
-    //         }
-    //     
-    //         iterator operator++(int)
-    //         {
-    //         auto tmp = *this;
-    //          ++* this;
-    //        return tmp;
-    //        }
-    //    
-    // protected:
-    //    Linknode<value_type>*m_node{};
-    //    
-    //};
     int a = 1;
     Linknode<int> node1(1);
     Linknode<int> node2(2);
@@ -41,11 +12,15 @@ int main()
     Linknode<int> node4(4);
     Linklist<int> list;
     list.Insert(&node1, list.getEnd());
-    list.Insert(&node2, list.getEnd());
+    Linklist_iterator<int> it = list.begin();
+    for (int i = 1; i < list.Length(); i++)
+        ++it;
+    list.it_Insert(it, 2);
     list.Insert(&node3, list.getEnd());
     list.Insert(&node4, list.getEnd());
-    list.Delete(node3);
-    list.Modity(list.getBegin(), node3);
+    //list.Delete(node3);
+    //list.it_Delete(3);
+    //list.Modity(4,5);
     list.Length();
     return 0;
 }
